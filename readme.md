@@ -1,45 +1,36 @@
 ## Use Azure app service editor
 
-1. make code change in the online editor
+    1.  Make code change in the online editor
+    2.  Your code changes go live as the code changes are saved.
 
-Your code changes go live as the code changes are saved.
+## Create a Language Understanding bot with Bot Service
 
+    1.  In the Azure portal, select Create new resource in the menu blade and click See all.
+    2.  In the search box, search for Web App Bot.
+    3.  In the Bot Service blade, provide the required information, and click Create. This creates and deploys the bot service and LUIS app to Azure.
+    4.  Set App name to your bot’s name. The name is used as the subdomain when your bot is deployed to the cloud (for example, mynotesbot.azurewebsites.net). This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot.
+    5.  Select the subscription, resource group, App service plan, and location.
+    6.  Select the Language understanding (Node.js) template for the Bot template field.
+    7.  Check the box to confirm to the terms of service.
+    8.  Confirm that the bot service has been deployed.
+    9.  Click Notifications (the bell icon that is located along the top edge of the Azure portal). The notification will change from Deployment started to Deployment succeeded.
+    10. After the notification changes to Deployment succeeded, click Go to resource on that notification.
 
+## Try the bot
 
+    1. Confirm that the bot has been deployed by checking the Notifications. The notifications will change from Deployment in progress... to Deployment succeeded. Click Go to resource button to open the bot's resources blade.
+    2. Once the bot is registered, click Test in Web Chat to open the Web Chat pane. Type "hello" in Web Chat.
 
-Create a Language Understanding bot with Bot Service
-
-1. In the Azure portal, select Create new resource in the menu blade and click See all.
-2. In the search box, search for Web App Bot.
-3. In the Bot Service blade, provide the required information, and click Create. This creates and deploys the bot service and LUIS app to Azure.
-
-4.Set App name to your bot’s name. The name is used as the subdomain when your bot is deployed to the cloud (for example, mynotesbot.azurewebsites.net). This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot.
-
-5.Select the subscription, resource group, App service plan, and location.
-
-6.Select the Language understanding (Node.js) template for the Bot template field.
-7.Check the box to confirm to the terms of service.
-8.Confirm that the bot service has been deployed.
-
-Click Notifications (the bell icon that is located along the top edge of the Azure portal). The notification will change from Deployment started to Deployment succeeded.
-After the notification changes to Deployment succeeded, click Go to resource on that notification.
-
-Try the bot
-
-1. Confirm that the bot has been deployed by checking the Notifications. The notifications will change from Deployment in progress... to Deployment succeeded. Click Go to resource button to open the bot's resources blade.
-
-2. Once the bot is registered, click Test in Web Chat to open the Web Chat pane. Type "hello" in Web Chat.
-
-Modify the LUIS app
+## Modify the LUIS app
 
 1. Log in to https://www.luis.ai using the same account you use to log in to Azure.
-2, Click on My apps. In the list of apps, find the app that begins with the name specified in App name in the Bot Service blade when you created the Bot Service.
+2. Click on My apps. In the list of apps, find the app that begins with the name specified in App name in the Bot Service blade when you created the Bot Service.
 
-2. The LUIS app starts with 4 intents: Cancel: Greeting, Help, and None.
+3. The LUIS app starts with 4 intents: Cancel: Greeting, Help, and None.
 
 The following steps add the Note.Create, Note.ReadAloud, and Note.Delete intents:
 
-3. Click on Prebuit Domains in the lower left of the page. Find the Note domain and click Add domain.
+4. Click on Prebuit Domains in the lower left of the page. Find the Note domain and click Add domain.
 
 This tutorial doesn't use all of the intents included in the Note prebuilt domain. In the Intents page, click on each of the following intent names and then click the Delete Intent button.
 
@@ -49,6 +40,7 @@ Note.Confirm
 Note.Clear
 Note.CheckOffItem
 Note.AddToNote
+
 The only intents that should remain in the LUIS app are the following:
 
 Note.ReadAloud
@@ -65,16 +57,16 @@ Greeting
 
 Cancel
 
-4. Click the Train button in the upper right to train your app.
+5. Click the Train button in the upper right to train your app.
 
 Click PUBLISH in the top navigation bar to open the Publish page. Click the Publish to production slot button. After successful publish, a LUIS app is deployed to the URL displayed in the Endpoint column in the Publish App page, in the row that starts with the Resource Name Starter_Key. The URL has a format similar to this example: https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=. The app ID and subscription key in this URL are the same as LuisAppId and LuisAPIKey in ** App Service Settings > ApplicationSettings > App settings **
 
-Modify the bot code
+# Modify the bot code
 
-1.Click Build and then click Open online code editor.
+1. Click Build and then click Open online code editor.
 2. In the code editor, open app.js. and review the code.
 
-Edit the default message handler
+# Edit the default message handler
 
 1. The bot has a default message handler. Edit it to match the following:
 
@@ -90,8 +82,7 @@ var bot = new builder.UniversalBot(connector, function (session, args) {
        console.log("initializing userData.notes in default message handler");
    }
 });
-
-Handle the Note.Create intent
+# Handle the Note.Create intent
 
 // CreateNote dialog
 bot.dialog('CreateNote', [
@@ -150,9 +141,10 @@ bot.dialog('CreateNote', [
     confirmPrompt: "Are you sure?"
 });
 
+
 Any entities in the utterance are passed to the dialog using the args parameter. The first step of the waterfall calls EntityRecognizer.findEntity to get the title of the note from any Note.Title entities in the LUIS response. If the LUIS app didn't detect a Note.Title entity, the bot prompts the user for the name of the note. The second step of the waterfall prompts for the text to include in the note. Once the bot has the text of the note, the third step uses session.userData to save the note in a notes object, using the title as the key. For more information on session.UserData see Manage state data.
 
-Handle the Note.Delete intent
+# Handle the Note.Delete intent
 
 1. Just as for the Note.Create intent, the bot examines the args parameter for a title. If no title is detected, the bot prompts the user. The title is used to look up the note to delete from session.userData.notes.
 
@@ -193,7 +185,7 @@ bot.dialog('DeleteNote', [
 
 The code that handles Note.Delete uses the noteCount function to determine whether the notes object contains notes.
 
-Paste the noteCount helper function at the end of app.js.
+# Paste the noteCount helper function at the end of app.js.
 
 // Helper function to count the number of notes stored in session.userData.notes
 function noteCount(notes) {
@@ -205,7 +197,7 @@ function noteCount(notes) {
     return i;
 }
 
-Handle the Note.ReadAloud intent
+# Handle the Note.ReadAloud intent
 
 Copy the following code and paste it in app.js after the handler for Note.Delete:
 
@@ -244,7 +236,7 @@ bot.dialog('ReadNote', [
 
 The session.userData.notes object is passed as the third argument to builder.Prompts.choice, so that the prompt displays a list of notes to the user.
 
-Now that you've added handlers for the new intents, the full code for app.js contains the following:
+# Now that you've added handlers for the new intents, the full code for app.js contains the following:
 
 var restify = require('restify');
 var builder = require('botbuilder');
@@ -437,34 +429,34 @@ function noteCount(notes) {
     return i;
 }
 
-Test the bot
+# Test the bot
 
-In the Azure Portal, click on Test in Web Chat to test the bot. Try type messages like "Create a note", "read my notes", and "delete notes" to invoke the intents that you added to it. 
+1. In the Azure Portal, click on Test in Web Chat to test the bot. Try type messages like "Create a note", "read my notes", and "delete notes" to invoke the intents that you added to it. 
 
-Next steps
+# Next steps
 From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.
 
 
-Handle user Actions
+# Handle user Actions
 
 Users commonly attempt to access certain functionality within a bot by using keywords like "help", "cancel", or "start over." Users do this in the middle of a conversation, when the bot is expecting a different response. By implementing actions, you can design your bot to handle such requests more gracefully. The handlers will examine user input for the keywords that you specify, such as "help", "cancel", or "start over," and respond appropriately.
 
-Bind actions to dialog
+# Bind actions to dialog
 Either user utterances or button clicks can trigger an action, which is associated with a dialog. If matches is specified, the action will listen for the user to say a word or a phrase that triggers the action. The matches option can take a regular expression or the name of a recognizer. To bind the action to a button click, use CardAction.dialogAction() to trigger the action.
 
 Actions are chainable, which allows you to bind as many actions to a dialog as you want.
 
-Bind a triggerAction
+#Bind a triggerAction
 To bind a triggerAction to a dialog, do the following:
 
 // Order dinner.
-bot.dialog('orderDinner', [
+bot.dialog('ReadAloud', [
     //...waterfall steps...
 ])
 // Once triggered, will clear the dialog stack and pushes
 // the 'orderDinner' dialog onto the bottom of stack.
 .triggerAction({
-    matches: /^order dinner$/i
+    matches: /^nevermind$/i
 });
 
 

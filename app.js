@@ -32,7 +32,8 @@ var tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azu
 // This default message handler is invoked if the user's utterance doesn't
 // match any intents handled by other dialogs.
 var bot = new builder.UniversalBot(connector, function (session, args) {
-    session.send("Hi... I'm the note bot sample. I can create new notes, read saved notes to you and delete notes.");
+  
+   session.send("Hi... I'm the note bot sample. I can create new notes, read saved notes to you and delete notes.");
 
    // If the object for storing notes in session.userData doesn't exist yet, initialize it
    if (!session.userData.notes) {
