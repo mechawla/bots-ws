@@ -1,9 +1,17 @@
-## Use Azure app service editor
+We will be using Azure Portal online tools for this workshop. 
 
-1.  Make code change in the online editor.
+##Pre-requisites
+
+Azure account to login to Azure [Portal](http://portal.azure.com)
+
+
+## General Notes
+
+1.  We will use Node SDK for Bot Framework and use the Azure runtime running in Azure. 
 2.  Your code changes go live as the code changes are saved.
 
-## Create a Language Understanding bot with Bot Service
+
+## Step 1: Create a Language Understanding bot with Bot Service
 
 1.  In the Azure portal, select Create new resource in the menu blade and click See all.
 2.  In the search box, search for Web App Bot.
@@ -21,13 +29,13 @@
     The notification will change from Deployment started to Deployment succeeded.
 10. After the notification changes to Deployment succeeded, click Go to resource on that notification.
 
-## Try the bot
+## Step 2: Try the bot
 
 1. Confirm that the bot has been deployed by checking the Notifications. The notifications will change from 
     Deployment in progress...to Deployment succeeded. Click Go to resource button to open the bot's resources blade.
 2. Once the bot is registered, click Test in Web Chat to open the Web Chat pane. Type "hello" in Web Chat.
 
-## Modify the LUIS app
+## Stp 3: Modify the LUIS app
 
 1. Log in to https://www.luis.ai using the same account you use to log in to Azure.
 2. Click on My apps. In the list of apps, find the app that begins with the name specified in App name in the Bot 
@@ -68,12 +76,12 @@
     The app ID and subscription key in this URL 
     are the same as LuisAppId and LuisAPIKey in ** App Service Settings > ApplicationSettings > App settings **
 
-## Modify the bot code
+## Step 4: Modify the bot code
 
 1. Click Build and then click Open online code editor.
 2. In the code editor, open app.js. and review the code.
 
-## Edit the default message handler
+## Step 5: Edit the default message handler
 
 1. The bot has a default message handler. Edit it to match the following:
 ````JavaScript
@@ -160,7 +168,7 @@ The second step of the waterfall prompts for the text to include in the note. On
 of the note, the third step uses session.userData to save the note in a notes object, using the title as
 the key. For more information on session.UserData see Manage state data.
 
-## Handle the Note.Delete intent
+## Step 6: Handle the Note.Delete intent
 
 1.  Just as for the Note.Create intent, the bot examines the args parameter for a title. If no title is detected, 
     the bot prompts the user. 
@@ -219,7 +227,7 @@ the key. For more information on session.UserData see Manage state data.
         return i;
     }
 ````
-## Handle the Note.ReadAloud intent
+## Step 7: Handle the Note.ReadAloud intent
 Copy the following code and paste it in app.js after the handler for Note.Delete:
 
 ````JavaScript
@@ -261,7 +269,7 @@ Copy the following code and paste it in app.js after the handler for Note.Delete
         The session.userData.notes object is passed as the third argument to builder.Prompts.choice, so that the prompt 
         displays a list of notes to the user.
 
-## Review the Code
+## Step 8: Review the Code
 
     Now that you've added handlers for the new intents, the full code for app.js contains the following:
 ````JavaScript
@@ -462,38 +470,38 @@ Copy the following code and paste it in app.js after the handler for Note.Delete
         return i;
     }
 ````
-## Test the bot
+## Step 9: Test the bot
 
-    In the Azure Portal, click on Test in Web Chat to test the bot. Try type messages like "Create a note", 
-    "read my notes", and "delete notes" to invoke the intents that you added to it. 
+In the Azure Portal, click on Test in Web Chat to test the bot. Try type messages like "Create a note", 
+"read my notes", and "delete notes" to invoke the intents that you added to it. 
 
-## Next steps
-    From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. 
-    Allowing and handling interruptions is a flexible design that accounts for what users really do. 
-    
-    Learn more about the various actions you can associate with a recognized intent.
+## Step 10: Next steps
+From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. 
+Allowing and handling interruptions is a flexible design that accounts for what users really do. 
+
+Learn more about the various actions you can associate with a recognized intent.
 
 
-## Handle user Actions
+## Step 11: Handle user Actions
 
-    Users commonly attempt to access certain functionality within a bot by using keywords like "help", "cancel", 
-    or "start over." Users do this in the middle of a conversation, when the bot is expecting a different response. 
-    
-    By implementing actions, you can design your bot to handle such requests more gracefully. The handlers will examine
-    user input for the keywords that you specify, such as "help", "cancel", or "start over," and respond appropriately.
+Users commonly attempt to access certain functionality within a bot by using keywords like "help", "cancel", 
+or "start over." Users do this in the middle of a conversation, when the bot is expecting a different response. 
 
-## Bind actions to dialog
+By implementing actions, you can design your bot to handle such requests more gracefully. The handlers will examine
+user input for the keywords that you specify, such as "help", "cancel", or "start over," and respond appropriately.
 
-    Either user utterances or button clicks can trigger an action, which is associated with a dialog. If matches is 
-    specified, the action will listen for the user to say a word or a phrase that triggers the action. The matches 
-    option can take a regular expression or the name of a recognizer. To bind the action to a button click, use 
-    CardAction.dialogAction() to trigger the action.
+## Step 12: Bind actions to dialog
 
-    Actions are chainable, which allows you to bind as many actions to a dialog as you want.
+Either user utterances or button clicks can trigger an action, which is associated with a dialog. If matches is 
+specified, the action will listen for the user to say a word or a phrase that triggers the action. The matches 
+option can take a regular expression or the name of a recognizer. To bind the action to a button click, use 
+CardAction.dialogAction() to trigger the action.
 
-##Bind a triggerAction
+Actions are chainable, which allows you to bind as many actions to a dialog as you want.
 
-    To bind a triggerAction to a dialog, do the following:
+## Step 13: Bind a triggerAction
+
+To bind a triggerAction to a dialog, do the following:
 
 ````JavaScript              
 // Order dinner.
@@ -506,12 +514,20 @@ Copy the following code and paste it in app.js after the handler for Note.Delete
         matches: /^nevermind$/i
     });
 ````
+
+## Optional 
+
+If you want to run this in your IDE then you can download the source code from Azure Portal.
+
+
 ## Build and debug
-1. download source code zip and extract source in local folder
-2. open the source folder in  Visual Studio Code
-3. make code changes
-4. download and run [botframework-emulator](https://emulator.botframework.com/)
-5. connect the emulator to http://localhost:3987
+1. In the Azure Portal open your Web App Bot and Click on Build under 'BOT MANAGEMENT'.
+2. Click on 'Download zip file' to download the source code.
+3. download source code zip and extract source in local folder.
+4. open the source folder in  your IDE.
+5. make code changes.
+6. download and run [botframework-emulator](https://emulator.botframework.com/)
+7. connect the emulator to http://localhost:3987
 
 ## Publish back
 
