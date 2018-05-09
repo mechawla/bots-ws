@@ -39,22 +39,22 @@
     This tutorial doesn't use all of the intents included in the Note prebuilt domain. In the Intents page, click on
     each of the following intent names and then click the Delete Intent button.
     
-    Note.ShowNext
-    Note.DeleteNoteItem
-    Note.Confirm
-    Note.Clear
-    Note.CheckOffItem
-    Note.AddToNote
+    **Note.ShowNext,
+    Note.DeleteNoteItem,
+    Note.Confirm,
+    Note.Clear,
+    Note.CheckOffItem,
+    Note.AddToNote**
 
     The only intents that should remain in the LUIS app are the following:
     
-    Note.ReadAloud
-    Note.Create
-    Note.Delete
-    None
-    Help
-    Greeting
-    Cancel
+    **Note.ReadAloud,
+    Note.Create,
+    Note.Delete,
+    None,
+    Help,
+    Greeting,
+    Cancel**
 
 6.  Click the Train button in the upper right to train your app.
 7.  Click PUBLISH in the top navigation bar to open the Publish page. Click the Publish to production slot button. 
@@ -507,19 +507,19 @@ Copy the following code and paste it in app.js after the handler for Note.Delete
     });
 ````
 ## Build and debug
-    1. download source code zip and extract source in local folder
-    2. open the source folder in  Visual Studio Code
-    3. make code changes
-    4. download and run [botframework-emulator](https://emulator.botframework.com/)
-    5. connect the emulator to http://localhost:3987
+1. download source code zip and extract source in local folder
+2. open the source folder in  Visual Studio Code
+3. make code changes
+4. download and run [botframework-emulator](https://emulator.botframework.com/)
+5. connect the emulator to http://localhost:3987
 
 ## Publish back
 
 ````JavaScript
-    npm run azure-publish
+npm run azure-publish
 ````
 
 ## Use continuous integration
 
-    If you have setup continuous integration, then your bot will automatically deployed when new changes are pushed to 
-    the source repository.
+If you have setup continuous integration, then your bot will automatically deployed when new changes are pushed to 
+the source repository.
