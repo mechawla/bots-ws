@@ -184,7 +184,8 @@
                             
                             // Prompt for note name
                             if (!title) {
-                                builder.Prompts.choice(session, 'Which note would you like to delete?', session.userData.notes);
+                                builder.Prompts.choice(session, 'Which note would you like to delete?', 
+                                session.userData.notes);
                             } else {
                                 next({ response: title });
                             }
@@ -237,7 +238,8 @@
                             
                             // Prompt for note name
                             if (!title) {
-                                builder.Prompts.choice(session, 'Which note would you like to read?', session.userData.notes);
+                                builder.Prompts.choice(session, 'Which note would you like to read?', 
+                                session.userData.notes);
                             } else {
                                 next({ response: title });
                             }
@@ -246,7 +248,8 @@
                         }
                     },
                     function (session, results) {        
-                        session.endDialog("Here's the '%s' note: '%s'.", results.response.entity, session.userData.notes[results.response.entity].text);
+                        session.endDialog("Here's the '%s' note: '%s'.", results.response.entity, session.userData.notes
+                        [results.response.entity].text);
                     }
                 ]).triggerAction({
                     matches: 'Note.ReadAloud'
@@ -257,7 +260,9 @@
         The session.userData.notes object is passed as the third argument to builder.Prompts.choice, so that the prompt 
         displays a list of notes to the user.
 
-## Now that you've added handlers for the new intents, the full code for app.js contains the following:
+## Review the Code
+
+    Now that you've added handlers for the new intents, the full code for app.js contains the following:
 
                 var restify = require('restify');
                 var builder = require('botbuilder');
@@ -286,14 +291,16 @@
                 * ---------------------------------------------------------------------------------------- */
                 
                 var tableName = 'botdata';
-                var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['AzureWebJobsStorage']);
+                var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, 
+                                       process.env['AzureWebJobsStorage']);
                 var tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azureTableClient);
                 
                 // Create your bot with a function to receive messages from the user.
                 // This default message handler is invoked if the user's utterance doesn't
                 // match any intents handled by other dialogs.
                 var bot = new builder.UniversalBot(connector, function (session, args) {
-                    session.send("Hi... I'm the note bot sample. I can create new notes, read saved notes to you and delete notes.");
+                    session.send("Hi... I'm the note bot sample. I can create new notes, 
+                    read saved notes to you and delete notes.");
                 
                    // If the object for storing notes in session.userData doesn't exist yet, initialize it
                    if (!session.userData.notes) {
@@ -309,7 +316,8 @@
                 var luisAPIKey = process.env.LuisAPIKey;
                 var luisAPIHostName = process.env.LuisAPIHostName || 'westus.api.cognitive.microsoft.com';
                 
-                const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v2.0/apps/' + luisAppId + '?subscription-key=' + luisAPIKey;
+                const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v2.0/apps/' + luisAppId + '?subscription-key=
+                                     ' + luisAPIKey;
                 
                 // Create a recognizer that gets intents from LUIS, and add it to the bot
                 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
@@ -387,7 +395,8 @@
                             
                             // Prompt for note name
                             if (!title) {
-                                builder.Prompts.choice(session, 'Which note would you like to delete?', session.userData.notes);
+                                builder.Prompts.choice(session, 'Which note would you like to delete?'
+                                                       , session.userData.notes);
                             } else {
                                 next({ response: title });
                             }
@@ -422,7 +431,8 @@
                             
                             // Prompt for note name
                             if (!title) {
-                                builder.Prompts.choice(session, 'Which note would you like to read?', session.userData.notes);
+                                builder.Prompts.choice(session, 'Which note would you like to read?'
+                                , session.userData.notes);
                             } else {
                                 next({ response: title });
                             }
@@ -431,7 +441,8 @@
                         }
                     },
                     function (session, results) {        
-                        session.endDialog("Here's the '%s' note: '%s'.", results.response.entity, session.userData.notes[results.response.entity].text);
+                        session.endDialog("Here's the '%s' note: '%s'.", results.response.entity
+                        , session.userData.notes[results.response.entity].text);
                     }
                 ]).triggerAction({
                     matches: 'Note.ReadAloud'
@@ -494,14 +505,14 @@
                     matches: /^nevermind$/i
                 });
 ```
-### Build and debug
+## Build and debug
     1. download source code zip and extract source in local folder
     2. open the source folder in  Visual Studio Code
     3. make code changes
     4. download and run [botframework-emulator](https://emulator.botframework.com/)
     5. connect the emulator to http://localhost:3987
 
-### Publish back
+## Publish back
 
     ```
     npm run azure-publish
