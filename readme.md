@@ -2,13 +2,14 @@ We will be using Azure Portal online tools for this workshop.
 
 ## Pre-requisites
 
-Azure account to login to Azure [Portal](http://portal.azure.com)
+1. Azure account to login to Azure [Portal](http://portal.azure.com)
+2. Make sure you have access to [LUIS](https://www.luis.ai) using the same account as you used to log into Azure portal.
 
 
 ## General Notes
 
-1.  We will use Node SDK for Bot Framework and use the Azure runtime running in Azure. 
-2.  Your code changes go live as the code changes are saved.
+1.  We will use Node SDK for Bot Framework and Azure runtime in Azure to run the bot service. 
+2.  Your code changes go live as the code changes are saved in online tools.
 
 
 ## Step 1: Create a Language Understanding bot with Bot Service
@@ -35,14 +36,15 @@ Azure account to login to Azure [Portal](http://portal.azure.com)
     Deployment in progress...to Deployment succeeded. Click Go to resource button to open the bot's resources blade.
 2. Once the bot is registered, click Test in Web Chat to open the Web Chat pane. Type "hello" in Web Chat.
 
-## Stp 3: Modify the LUIS app
+## Step 3: Modify the LUIS app
 
 1. Log in to https://www.luis.ai using the same account you use to log in to Azure.
-2. Click on My apps. In the list of apps, find the app that begins with the name specified in App name in the Bot 
-    Service blade when you created the Bot Service.
-3. The LUIS app starts with 4 intents: Cancel: Greeting, Help, and None.
-4. The following steps add the Note.Create, Note.ReadAloud, and Note.Delete intents:
-5. Click on Prebuit Domains in the lower left of the page. Find the Note domain and click Add domain.
+2. Click on My apps. 
+3. In the list of apps, find the app that begins with the name specified in App name in the Bot 
+Service blade when you created the Bot Service.
+4. The LUIS app starts with 4 intents: Cancel: Greeting, Help, and None.
+5. The following steps add the Note.Create, Note.ReadAloud, and Note.Delete intents:
+6. Click on Prebuit Domains in the lower left of the page. Find the Note domain and click Add domain.
 
     This tutorial doesn't use all of the intents included in the Note prebuilt domain. In the Intents page, click on
     each of the following intent names and then click the Delete Intent button.
@@ -53,7 +55,7 @@ Azure account to login to Azure [Portal](http://portal.azure.com)
     Note.Clear,
     Note.CheckOffItem,
     Note.AddToNote**
-
+    
     The only intents that should remain in the LUIS app are the following:
     
     **Note.ReadAloud,
@@ -475,11 +477,9 @@ Copy the following code and paste it in app.js after the handler for Note.Delete
 In the Azure Portal, click on Test in Web Chat to test the bot. Try type messages like "Create a note", 
 "read my notes", and "delete notes" to invoke the intents that you added to it. 
 
-## Step 10: Next steps
+## Next steps
 From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. 
 Allowing and handling interruptions is a flexible design that accounts for what users really do. 
-
-Learn more about the various actions you can associate with a recognized intent.
 
 
 ## Step 11: Handle user Actions
