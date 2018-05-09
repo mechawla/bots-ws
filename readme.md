@@ -1,6 +1,6 @@
 We will be using Azure Portal online tools for this workshop. 
 
-##Pre-requisites
+## Pre-requisites
 
 Azure account to login to Azure [Portal](http://portal.azure.com)
 
