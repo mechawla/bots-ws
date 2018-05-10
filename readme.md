@@ -482,7 +482,7 @@ From trying the bot, you can see that the recognizer can trigger interruption of
 Allowing and handling interruptions is a flexible design that accounts for what users really do. 
 
 
-## Step 11: Handle user Actions
+## Step 10: Handle user Actions
 
 Users commonly attempt to access certain functionality within a bot by using keywords like "help", "cancel", 
 or "start over." Users do this in the middle of a conversation, when the bot is expecting a different response. 
@@ -490,7 +490,7 @@ or "start over." Users do this in the middle of a conversation, when the bot is 
 By implementing actions, you can design your bot to handle such requests more gracefully. The handlers will examine
 user input for the keywords that you specify, such as "help", "cancel", or "start over," and respond appropriately.
 
-## Step 12: Bind actions to dialog
+## Step 11: Bind actions to dialog
 
 Either user utterances or button clicks can trigger an action, which is associated with a dialog. If matches is 
 specified, the action will listen for the user to say a word or a phrase that triggers the action. The matches 
@@ -499,7 +499,7 @@ CardAction.dialogAction() to trigger the action.
 
 Actions are chainable, which allows you to bind as many actions to a dialog as you want.
 
-## Step 13: Bind a triggerAction
+## Step 12: Bind a triggerAction
 
 To bind a triggerAction to a dialog, do the following:
 
@@ -533,7 +533,7 @@ For this workshop, we will test it with Skype channel.
 5. Once connected, you will see the bot in your contact list. Start conversing and have fun!
 
 
-## How to run this ocally on your machines 
+## How to run this locally on your machines 
 
 If you want to run this in your IDE then you can download the source code from Azure Portal.
 
