@@ -515,7 +515,25 @@ To bind a triggerAction to a dialog, do the following:
     });
 ````
 
-## Optional 
+## Publish your Bot
+
+A channel is the connection between the Bot Framework and communication apps. You configure a bot to connect to the 
+channels you want it to be available on. For example, a bot connected to the Skype channel can be added to a contact 
+list and people can interact with it in Skype.
+
+The publishing process is different for each channel.By default your Bot comes with Web Chat and Skype channels 
+built into it. 
+
+For this workshop, we will test it with Skype channel.
+
+1. In the Bot Service blade, click Channels under Bot Management.
+2. You will see that Skype and Web Chat are already connected.
+3. Click on 'Skype' which will take you to a page to login to skype app. 
+4. Use your personal credentials to connect. 
+5. Once connected, you will see the bot in your contact list. Start conversing and have fun!
+
+
+## How to run this ocally on your machines 
 
 If you want to run this in your IDE then you can download the source code from Azure Portal.
 
@@ -529,13 +547,3 @@ If you want to run this in your IDE then you can download the source code from A
 6. download and run [botframework-emulator](https://emulator.botframework.com/)
 7. connect the emulator to http://localhost:3987
 
-## Publish back
-
-````JavaScript
-npm run azure-publish
-````
-
-## Use continuous integration
-
-If you have setup continuous integration, then your bot will automatically deployed when new changes are pushed to 
-the source repository.
