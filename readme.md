@@ -16,7 +16,8 @@ We will be using Azure Portal online tools for this workshop.
 
 1.  In the Azure portal, select Create new resource in the menu blade and click See all.
 2.  In the search box, search for Web App Bot.
-3.  In the Bot Service blade, provide the required information, and click Create. 
+3.  In the Bot Service blade, provide the required information. Make sure to click on Bot Template blade
+    ,choose "Node.js" and "Language Understanding" Bot. click Create. 
     This creates and deploys the bot service and LUIS app to Azure.
 4.  Set App name to your bot’s name. The name is used as the subdomain when your bot is deployed 
     to the cloud (for example, mynotesbot.azurewebsites.net).
