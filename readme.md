@@ -528,10 +528,13 @@ built into it.
 For this workshop, we will test it with Skype channel.
 
 1. In the Bot Service blade, click Channels under Bot Management.
-2. You will see that Skype and Web Chat are already connected.
-3. Click on 'Skype' which will take you to a page to login to skype app. 
-4. Use your personal credentials to connect. 
-5. Once connected, you will see the bot in your contact list. Start conversing and have fun!
+2. In "Add a featured channel", click on Skype to configure that channel.
+3. Leave the defaults for everything and click on 'Publish' which will bring you to the final page. 
+   Skype channel is already published in preview by default so no need to publish again.
+4. Cancel and come out of the page. Now you will see Skype as a running channel in the top section.    
+5. Click on 'Skype' which will take you to a page to login to skype app. 
+6. Use your personal credentials to connect. 
+7. Once connected, you will see the bot in your contact list. Start conversing and have fun!
 
 
 ## How to run this locally on your machines 
