@@ -14,27 +14,31 @@ We will be using Azure Portal online tools for this workshop.
 
 ## Step 1: Create a Language Understanding bot with Bot Service
 
+**Use Icognito Mode in your browse to login to Azure Portal**
+
 1.  In the Azure portal, select Create new resource in the menu blade and click See all.
 2.  In the search box, search for Web App Bot.
-3.  In the Bot Service blade, provide the required information. Make sure to click on Bot Template blade
-    ,choose "Node.js" and "Language Understanding" Bot. click Create. 
-    This creates and deploys the bot service and LUIS app to Azure.
-4.  Set App name to your bot’s name. The name is used as the subdomain when your bot is deployed 
-    to the cloud (for example, mynotesbot.azurewebsites.net).
+3.  Set App name to your bot’s name, use <FIRLAS>notesbot. The name is used as the sub-domain when your bot is deployed 
+    to the cloud (for example, megchanotesbot.azurewebsites.net).
     This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, 
     to find the LUIS app associated with the bot.
-5.  Select the subscription, resource group, App service plan, and location.
-6.  Select the Language understanding (Node.js) template for the Bot template field.
-7.  Check the box to confirm to the terms of service.
-8.  Confirm that the bot service has been deployed.
-9.  Click Notifications (the bell icon that is located along the top edge of the Azure portal). 
+4.  Select the subscription from the drop-down.
+5.  For resource group, select "Create New" and give the resource group name as "Innovation-WS-<FIRLAS>".
+6.  Use 'West US' as the location.
+7.  For Bot Template, click on the field and choose "Node.js" and "Language Understanding" Bot. Click 'Select'.
+8.  For everything else, use default options and click Create. This creates and deploys the bot service and 
+    LUIS app to Azure.
+9.  Select the Language understanding (Node.js) template for the Bot template field.
+10. Check the box to confirm to the terms of service.
+11. Confirm that the bot service has been deployed.
+12. Click Notifications (the bell icon that is located along the top edge of the Azure portal). 
     The notification will change from Deployment started to Deployment succeeded.
-10. After the notification changes to Deployment succeeded, click Go to resource on that notification.
+13. After the notification changes to Deployment succeeded, click Go to resource on that notification.
 
 ## Step 2: Try the bot
 
 1. Confirm that the bot has been deployed by checking the Notifications. The notifications will change from 
-    Deployment in progress...to Deployment succeeded. Click Go to resource button to open the bot's resources blade.
+   Deployment in progress...to Deployment succeeded. Click Go to resource button to open the bot's resources blade.
 2. Once the bot is registered, click Test in Web Chat to open the Web Chat pane. Type "hello" in Web Chat.
 
 ## Step 3: Modify the LUIS app
