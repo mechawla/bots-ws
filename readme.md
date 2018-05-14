@@ -23,7 +23,7 @@ We will be using Azure Portal online tools for this workshop.
     This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, 
     to find the LUIS app associated with the bot.
 4.  Select the subscription from the drop-down.
-5.  For resource group, select "Create New" and give the resource group name as "Innovation-WS-<YourFirLas>".
+5.  For resource group, select "Create New" and give the resource group name as "Innovation-WS-YourFirLas".
 6.  Use 'West US' as the location.
 7.  For Bot Template, click on the field and choose "Node.js" and "Language Understanding" Bot. Click 'Select'.
 8.  For everything else, use default options and click Create. This creates and deploys the bot service and 
